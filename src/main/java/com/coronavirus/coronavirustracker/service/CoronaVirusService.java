@@ -30,7 +30,7 @@ public class CoronaVirusService {
 	private static final String CASES_DEATH_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/deaths";
 	private static final String CASES_RECOVERED_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/recovered?country=Australia";
 	
-	private String bearer = "0d0fe397-9619-3c79-92a6-619a08587764";
+	private String bearer = "ad6ed2aa-c86f-3d76-8dda-69d38dccf762";
 	
 	@PostConstruct
 	public Corona getDeaths() {
