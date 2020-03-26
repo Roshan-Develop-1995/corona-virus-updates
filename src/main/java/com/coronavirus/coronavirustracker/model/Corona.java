@@ -8,6 +8,7 @@ public class Corona {
 	private int noOfDeaths;
 	private int noOfRecoveredCases;
 	private String country;
+	private String errorMessage;
 
 	public int getNoOfCases() {
 		return noOfCases;
@@ -55,6 +56,14 @@ public class Corona {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 	
 	

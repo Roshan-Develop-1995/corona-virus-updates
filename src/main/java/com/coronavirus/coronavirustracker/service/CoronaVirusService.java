@@ -9,6 +9,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -90,36 +91,46 @@ public class CoronaVirusService {
         header.add("Authorization","Bearer "+ bearer);
         HttpEntity<Cases> request=new HttpEntity(header);
         RestTemplate restTemplate=new RestTemplate();
-        ResponseEntity<List<Cases>> responseCases = restTemplate.exchange(CASES_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<Cases>>() {
-        });
-        ResponseEntity<List<SuspectedCases>> responseSuspectedCases = restTemplate.exchange(CASES_SUSPECTED_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<SuspectedCases>>() {
-        });
-        ResponseEntity<List<ConfirmedCases>> responseConfirmedCases = restTemplate.exchange(CASES_CONFIRMED_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<ConfirmedCases>>() {
-        });
-        ResponseEntity<List<Deaths>> responseDeathCases = restTemplate.exchange(CASES_DEATH_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<Deaths>>() {
-        });
-        ResponseEntity<List<Recovered>> responseRecoveredCases = restTemplate.exchange(CASES_RECOVERED_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<Recovered>>() {
-        });
-        List<Cases> cases = new ArrayList<Cases>();
-        List<SuspectedCases> suspectedCases = new ArrayList<SuspectedCases>();
-        List<ConfirmedCases> confirmedCases = new ArrayList<ConfirmedCases>();
-        List<Deaths> deaths = new ArrayList<Deaths>();
-        List<Recovered> recovered = new ArrayList<Recovered>();
-        Corona corona = new Corona();
-        cases = responseCases.getBody();
-        suspectedCases = responseSuspectedCases.getBody();
-        confirmedCases = responseConfirmedCases.getBody();
-        deaths = responseDeathCases.getBody();
-        recovered = responseRecoveredCases.getBody();
+        try {
+        	ResponseEntity<List<Cases>> responseCases = restTemplate.exchange(CASES_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<Cases>>() {
+            });
+            ResponseEntity<List<SuspectedCases>> responseSuspectedCases = restTemplate.exchange(CASES_SUSPECTED_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<SuspectedCases>>() {
+            });
+            ResponseEntity<List<ConfirmedCases>> responseConfirmedCases = restTemplate.exchange(CASES_CONFIRMED_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<ConfirmedCases>>() {
+            });
+            ResponseEntity<List<Deaths>> responseDeathCases = restTemplate.exchange(CASES_DEATH_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<Deaths>>() {
+            });
+            ResponseEntity<List<Recovered>> responseRecoveredCases = restTemplate.exchange(CASES_RECOVERED_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<Recovered>>() {
+            });
+            Corona corona = new Corona();
+            if(HttpStatus.OK == responseCases.getStatusCode()) {
+            	List<Cases> cases = new ArrayList<Cases>();
+                List<SuspectedCases> suspectedCases = new ArrayList<SuspectedCases>();
+                List<ConfirmedCases> confirmedCases = new ArrayList<ConfirmedCases>();
+                List<Deaths> deaths = new ArrayList<Deaths>();
+                List<Recovered> recovered = new ArrayList<Recovered>();
+                cases = responseCases.getBody();
+                suspectedCases = responseSuspectedCases.getBody();
+                confirmedCases = responseConfirmedCases.getBody();
+                deaths = responseDeathCases.getBody();
+                recovered = responseRecoveredCases.getBody();
+                
+                corona.setCountry(cases.get(0).getCountry());
+                corona.setNoOfCases(cases.get(0).getData());
+                corona.setNoOfSuspectedCases(suspectedCases.get(0).getData());
+                corona.setNoOfConfirmedCases(confirmedCases.get(0).getData());
+                corona.setNoOfDeaths(deaths.get(0).getData());
+                corona.setNoOfRecoveredCases(recovered.get(0).getData());
+            }
+            else
+            	corona.setErrorMessage("No data found for this country, please provide a valid country.");
+            return corona;
+        }catch(Exception e) {
+        	Corona corona = new Corona();
+        	corona.setErrorMessage("No data found for this country, please provide a valid country.");
+        	return corona;
+        }
         
-        corona.setCountry(cases.get(0).getCountry());
-        corona.setNoOfCases(cases.get(0).getData());
-        corona.setNoOfSuspectedCases(suspectedCases.get(0).getData());
-        corona.setNoOfConfirmedCases(confirmedCases.get(0).getData());
-        corona.setNoOfDeaths(deaths.get(0).getData());
-        corona.setNoOfRecoveredCases(recovered.get(0).getData());
-        
-        return corona;
 
 	}
 	

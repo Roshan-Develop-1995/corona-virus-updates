@@ -24,6 +24,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	</div>
   </form>
 </header>
+<div class="jumbotron" th:if="${flag == 'noCountry'}">
+	<p class="lead" th:text="${search}"></p>
+</div>
 <div th:if="${flag == 'true'}" id="records" class="table-responsive">
   <div class="w3-content">
   	<table class = "table table-striped">

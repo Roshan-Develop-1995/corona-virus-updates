@@ -23,14 +23,26 @@ public class HomeController {
 	
 	@GetMapping("/search.htm")
 	public String showCases(@RequestParam("country") String country, Model model) {
-		Corona corona = coronaVirusService.getCases(country);
-		model.addAttribute("cases", corona.getNoOfCases());
-		model.addAttribute("country", corona.getCountry());
-		model.addAttribute("confirmedCases", corona.getNoOfConfirmedCases());
-		model.addAttribute("suspectedCases", corona.getNoOfSuspectedCases());
-		model.addAttribute("deaths", corona.getNoOfDeaths());
-		model.addAttribute("recovered", corona.getNoOfRecoveredCases());
-		model.addAttribute("flag","true");
+		if(country == "") {
+			model.addAttribute("search", "Please Specify a Country");
+			model.addAttribute("flag", "noCountry");
+		}
+		else if(country != "") {
+			Corona corona = coronaVirusService.getCases(country);
+			if(null!=corona.getErrorMessage() && corona.getErrorMessage()!="") {
+				model.addAttribute("flag", "noCountry");
+				model.addAttribute("search", corona.getErrorMessage());
+			}
+			else {
+				model.addAttribute("cases", corona.getNoOfCases());
+				model.addAttribute("country", corona.getCountry());
+				model.addAttribute("confirmedCases", corona.getNoOfConfirmedCases());
+				model.addAttribute("suspectedCases", corona.getNoOfSuspectedCases());
+				model.addAttribute("deaths", corona.getNoOfDeaths());
+				model.addAttribute("recovered", corona.getNoOfRecoveredCases());
+				model.addAttribute("flag","true");
+			}
+		}
 		return "homeView";
 	}
 
