@@ -7,6 +7,7 @@ public class Corona {
 	private int noOfConfirmedCases;
 	private int noOfDeaths;
 	private int noOfRecoveredCases;
+	private String country;
 
 	public int getNoOfCases() {
 		return noOfCases;
@@ -47,6 +48,14 @@ public class Corona {
 	public void setNoOfRecoveredCases(int noOfRecoveredCases) {
 		this.noOfRecoveredCases = noOfRecoveredCases;
 	}
-	
 
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	
 }

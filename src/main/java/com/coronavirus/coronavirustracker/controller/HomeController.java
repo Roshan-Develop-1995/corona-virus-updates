@@ -17,13 +17,7 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String home(Model model) {
-		Corona corona = coronaVirusService.getDeaths();
-		model.addAttribute("cases", corona.getNoOfCases());
-		model.addAttribute("confirmedCases", corona.getNoOfConfirmedCases());
-		model.addAttribute("suspectedCases", corona.getNoOfSuspectedCases());
-		model.addAttribute("deaths", corona.getNoOfDeaths());
-		model.addAttribute("recovered", corona.getNoOfRecoveredCases());
-		model.addAttribute("flag","true");
+		model.addAttribute("flag","false");
 		return "homeView";
 	}
 	
@@ -31,6 +25,7 @@ public class HomeController {
 	public String showCases(@RequestParam("country") String country, Model model) {
 		Corona corona = coronaVirusService.getCases(country);
 		model.addAttribute("cases", corona.getNoOfCases());
+		model.addAttribute("country", corona.getCountry());
 		model.addAttribute("confirmedCases", corona.getNoOfConfirmedCases());
 		model.addAttribute("suspectedCases", corona.getNoOfSuspectedCases());
 		model.addAttribute("deaths", corona.getNoOfDeaths());

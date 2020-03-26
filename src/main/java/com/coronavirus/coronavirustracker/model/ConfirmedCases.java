@@ -12,12 +12,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
 "date",
+"country",
 "data"
 })
 public class ConfirmedCases {
 
 @JsonProperty("date")
 private String date;
+@JsonProperty("country")
+private String country;
 @JsonProperty("data")
 private Integer data;
 @JsonIgnore
@@ -31,6 +34,16 @@ return date;
 @JsonProperty("date")
 public void setDate(String date) {
 this.date = date;
+}
+
+@JsonProperty("country")
+public String getCountry() {
+return country;
+}
+
+@JsonProperty("country")
+public void setCountry(String country) {
+this.country = country;
 }
 
 @JsonProperty("data")

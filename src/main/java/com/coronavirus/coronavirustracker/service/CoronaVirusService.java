@@ -24,15 +24,15 @@ import com.coronavirus.coronavirustracker.model.SuspectedCases;
 public class CoronaVirusService {
 	
 	
-	private static final String CASES_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/cases?country=Australia";
-	private static final String CASES_SUSPECTED_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/cases/suspected?country=Australia";
-	private static final String CASES_CONFIRMED_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/cases/confirmed?country=Australia";
-	private static final String CASES_DEATH_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/deaths";
-	private static final String CASES_RECOVERED_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/recovered?country=Australia";
+	private static final String CASES_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/cases?country=";
+	private static final String CASES_SUSPECTED_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/cases/suspected?country=";
+	private static final String CASES_CONFIRMED_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/cases/confirmed?country=";
+	private static final String CASES_DEATH_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/deaths?country=";
+	private static final String CASES_RECOVERED_URL = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/1.0.0/recovered?country=";
 	
-	private String bearer = "ad6ed2aa-c86f-3d76-8dda-69d38dccf762";
+	private String bearer = "42ec3654-8fb9-33af-ac59-420fef39d9ee";
 	
-	@PostConstruct
+	/*@PostConstruct
 	public Corona getDeaths() {
 		HttpHeaders header=new HttpHeaders();
         header.add("Authorization","Bearer "+ bearer);
@@ -59,7 +59,7 @@ public class CoronaVirusService {
         confirmedCases = responseConfirmedCases.getBody();
         deaths = responseDeathCases.getBody();
         recovered = responseRecoveredCases.getBody();
-        for(Cases c:cases) {
+        /*for(Cases c:cases) {
         	corona.setNoOfCases(c.getCases());
         }
         for(SuspectedCases sc:suspectedCases) {
@@ -75,8 +75,14 @@ public class CoronaVirusService {
         	corona.setNoOfRecoveredCases(r.getData());
         }
         
+        corona.setNoOfCases(cases.get(0).getCases());
+        corona.setNoOfSuspectedCases(suspectedCases.get(0).getData());
+        corona.setNoOfConfirmedCases(confirmedCases.get(0).getData());
+        corona.setNoOfDeaths(deaths.get(0).getData());
+        corona.setNoOfRecoveredCases(recovered.get(0).getData());
+        
         return corona;
-	}
+	}*/
 	
 	public Corona getCases(String country) {
 		
@@ -90,7 +96,7 @@ public class CoronaVirusService {
         });
         ResponseEntity<List<ConfirmedCases>> responseConfirmedCases = restTemplate.exchange(CASES_CONFIRMED_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<ConfirmedCases>>() {
         });
-        ResponseEntity<List<Deaths>> responseDeathCases = restTemplate.exchange(CASES_DEATH_URL,HttpMethod.GET,request,new ParameterizedTypeReference<List<Deaths>>() {
+        ResponseEntity<List<Deaths>> responseDeathCases = restTemplate.exchange(CASES_DEATH_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<Deaths>>() {
         });
         ResponseEntity<List<Recovered>> responseRecoveredCases = restTemplate.exchange(CASES_RECOVERED_URL + country,HttpMethod.GET,request,new ParameterizedTypeReference<List<Recovered>>() {
         });
@@ -105,21 +111,13 @@ public class CoronaVirusService {
         confirmedCases = responseConfirmedCases.getBody();
         deaths = responseDeathCases.getBody();
         recovered = responseRecoveredCases.getBody();
-        for(Cases c:cases) {
-        	corona.setNoOfCases(c.getCases());
-        }
-        for(SuspectedCases sc:suspectedCases) {
-        	corona.setNoOfSuspectedCases(sc.getData());
-        }
-        for(ConfirmedCases cc:confirmedCases) {
-        	corona.setNoOfConfirmedCases(cc.getData());
-        }
-        for(Deaths d:deaths) {
-        	corona.setNoOfDeaths(d.getData());
-        }
-        for(Recovered r:recovered) {
-        	corona.setNoOfRecoveredCases(r.getData());
-        }
+        
+        corona.setCountry(cases.get(0).getCountry());
+        corona.setNoOfCases(cases.get(0).getData());
+        corona.setNoOfSuspectedCases(suspectedCases.get(0).getData());
+        corona.setNoOfConfirmedCases(confirmedCases.get(0).getData());
+        corona.setNoOfDeaths(deaths.get(0).getData());
+        corona.setNoOfRecoveredCases(recovered.get(0).getData());
         
         return corona;
 

@@ -13,14 +13,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
 "date",
-"cases"
+"country",
+"data"
 })
 public class Cases {
 
 @JsonProperty("date")
 private String date;
-@JsonProperty("cases")
-private Integer cases;
+@JsonProperty("country")
+private String country;
+@JsonProperty("data")
+private Integer data;
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -34,14 +37,24 @@ public void setDate(String date) {
 this.date = date;
 }
 
-@JsonProperty("cases")
-public Integer getCases() {
-return cases;
+@JsonProperty("country")
+public String getCountry() {
+return country;
 }
 
-@JsonProperty("cases")
-public void setCases(Integer cases) {
-this.cases = cases;
+@JsonProperty("country")
+public void setCountry(String country) {
+this.country = country;
+}
+
+@JsonProperty("data")
+public Integer getData() {
+return data;
+}
+
+@JsonProperty("data")
+public void setData(Integer data) {
+this.data = data;
 }
 
 @JsonAnyGetter
