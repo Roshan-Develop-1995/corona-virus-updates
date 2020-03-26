@@ -17,8 +17,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">CORONA VIRUS REAL TIME UPDATES</h1>
-  <p class="w3-xlarge">
-  </p>
   <form action="/search.htm">
   	<div class="active-cyan-3 active-cyan-4 mb-4">
   		<input class="form-control" type="text" placeholder="Search Country" name="country" aria-label="Search Country">
@@ -26,9 +24,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	</div>
   </form>
 </header>
-<div th:if="${flag == 'true'}" id="records" class="w3-row-padding w3-padding-64 w3-container">
+<div th:if="${flag == 'true'}" id="records" class="table-responsive">
   <div class="w3-content">
-  	<table class = "table striped">
+  	<table class = "table table-striped">
 	    	<tr>
 	    		<th>Country</th>
 	    		<th>Cases Identified</th>
