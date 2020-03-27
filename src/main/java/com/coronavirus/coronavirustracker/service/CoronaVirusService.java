@@ -104,7 +104,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia2 = new CoronaIndia();
 		coronaIndia2.setState("Delhi");
-		coronaIndia2.setPositiveCases(36);
+		coronaIndia2.setPositiveCases(39);
 		coronaIndia2.setNoOfForeigners(1);
 		coronaIndia2.setNoOfIndians(coronaIndia2.getPositiveCases()-coronaIndia2.getNoOfForeigners());
 		coronaIndia2.setDeaths(1);
@@ -112,7 +112,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia3 = new CoronaIndia();
 		coronaIndia3.setState("Jammu and Kashmir");
-		coronaIndia3.setPositiveCases(14);
+		coronaIndia3.setPositiveCases(18);
 		coronaIndia3.setNoOfForeigners(0);
 		coronaIndia3.setNoOfIndians(coronaIndia3.getPositiveCases()-coronaIndia3.getNoOfForeigners());
 		coronaIndia3.setDeaths(1);
@@ -144,7 +144,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia7 = new CoronaIndia();
 		coronaIndia7.setState("Karnataka");
-		coronaIndia7.setPositiveCases(55);
+		coronaIndia7.setPositiveCases(62);
 		coronaIndia7.setNoOfForeigners(0);
 		coronaIndia7.setNoOfIndians(coronaIndia7.getPositiveCases()-coronaIndia7.getNoOfForeigners());
 		coronaIndia7.setDeaths(3);
@@ -152,7 +152,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia8 = new CoronaIndia();
 		coronaIndia8.setState("Tamil Nadu");
-		coronaIndia8.setPositiveCases(29);
+		coronaIndia8.setPositiveCases(35);
 		coronaIndia8.setNoOfForeigners(3);
 		coronaIndia8.setNoOfIndians(coronaIndia8.getPositiveCases()-coronaIndia8.getNoOfForeigners());
 		coronaIndia8.setDeaths(1);
@@ -160,7 +160,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia9 = new CoronaIndia();
 		coronaIndia9.setState("Telangana");
-		coronaIndia9.setPositiveCases(43);
+		coronaIndia9.setPositiveCases(45);
 		coronaIndia9.setNoOfForeigners(11);
 		coronaIndia9.setNoOfIndians(coronaIndia9.getPositiveCases()-coronaIndia9.getNoOfForeigners());
 		coronaIndia9.setDeaths(0);
@@ -182,17 +182,17 @@ public class CoronaVirusService {
 		coronaIndia11.setDeaths(0);
 		coronaIndiaCases.add(coronaIndia11);
 		
-		CoronaIndia coronaIndia12 = new CoronaIndia();
+		/*CoronaIndia coronaIndia12 = new CoronaIndia();
 		coronaIndia12.setState("Haryana");
 		coronaIndia12.setPositiveCases(21);
 		coronaIndia12.setNoOfForeigners(14);
 		coronaIndia12.setNoOfIndians(coronaIndia12.getPositiveCases()-coronaIndia12.getNoOfForeigners());
 		coronaIndia12.setDeaths(0);
-		coronaIndiaCases.add(coronaIndia12);
+		coronaIndiaCases.add(coronaIndia12);*/
 		
 		CoronaIndia coronaIndia13 = new CoronaIndia();
 		coronaIndia13.setState("Andhra Pradesh");
-		coronaIndia13.setPositiveCases(10);
+		coronaIndia13.setPositiveCases(12);
 		coronaIndia13.setNoOfForeigners(0);
 		coronaIndia13.setNoOfIndians(coronaIndia13.getPositiveCases()-coronaIndia13.getNoOfForeigners());
 		coronaIndia13.setDeaths(0);
@@ -200,7 +200,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia14 = new CoronaIndia();
 		coronaIndia14.setState("Maharashtra");
-		coronaIndia14.setPositiveCases(130);
+		coronaIndia14.setPositiveCases(147);
 		coronaIndia14.setNoOfForeigners(3);
 		coronaIndia14.setNoOfIndians(coronaIndia14.getPositiveCases()-coronaIndia14.getNoOfForeigners());
 		coronaIndia14.setDeaths(5);
@@ -232,7 +232,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia18 = new CoronaIndia();
 		coronaIndia18.setState("Odisha");
-		coronaIndia18.setPositiveCases(2);
+		coronaIndia18.setPositiveCases(3);
 		coronaIndia18.setNoOfForeigners(0);
 		coronaIndia18.setNoOfIndians(coronaIndia18.getPositiveCases()-coronaIndia18.getNoOfForeigners());
 		coronaIndia18.setDeaths(0);
@@ -264,7 +264,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia22 = new CoronaIndia();
 		coronaIndia22.setState("Madhya Pradesh");
-		coronaIndia22.setPositiveCases(23);
+		coronaIndia22.setPositiveCases(24);
 		coronaIndia22.setNoOfForeigners(0);
 		coronaIndia22.setNoOfIndians(coronaIndia22.getPositiveCases()-coronaIndia22.getNoOfForeigners());
 		coronaIndia22.setDeaths(2);
