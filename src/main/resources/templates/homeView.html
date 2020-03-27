@@ -12,6 +12,13 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
+.btn {
+      font-size:0.875em;
+      display:block;
+      left:-60px;
+      margin-top:35px;
+      width:100%;
+    }
 </style>
 <body>
 <!-- Header -->
@@ -24,9 +31,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	</div>
   </form>
   <form action="/searchIndianState.htm">
-  	<div class="active-cyan-3 active-cyan-4 mb-4">
-  		<input id="searchIndia" class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"  value="Click for Cases in India" >
-  	</div>
+  	 <div >
+  		<!--<button  id="searchIndia" class="w3-button w3-black w3-padding-large w3-large w3-margin-top" style = "{height:10px;font-size:2px}" type="submit">CLICK HERE TO VIEW STATE AND UT WISE UPDATES FOR INDIA</button>-->
+  		<input id="searchIndia" class="w3-button w3-black w3-padding-large w3-large w3-margin-top" style = "{height:10px;font-size:2px}" type="submit" value="Click for State and UT wise updates in India" >
+  	</div> 
   </form>
 </header>
 <div class="jumbotron" th:if="${flag == 'noCountry'}">
