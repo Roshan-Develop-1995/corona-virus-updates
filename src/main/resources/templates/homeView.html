@@ -77,24 +77,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
  </div>
  <div  th:if="${flag == 'indianCases'}" id="recordsIndia" class="table-responsive">
   <div class="w3-content">
-  	<p class="lead" align="center">Last Updated - 27th Mar 2020 19:00 IST</p>
   	<table class = "table table-striped">
 	    	<tr>
 	    		<th>State</th>
-	    		<th>Positive Cases</th>
-	    		<th>No of Foreigners</th>
-	    		<th>No of Indians</th>
+	    		<th>Active</th>
+	    		<th>Confirmed</th>
 	    		<th>Deaths</th>
+	    		<th>Recovered</th>
 	    	</tr>
 	    	<tr th:each = "indianCase : ${indianCases}">
 	    			<td th:text="${indianCase.state}"></td>
-	    			<td th:text="${indianCase.positiveCases}"></td>
-	    			<td th:text="${indianCase.noOfForeigners}"></td>
-	    			<td th:text="${indianCase.noOfIndians}"></td>
+	    			<td th:text="${indianCase.active}"></td>
+	    			<td th:text="${indianCase.confirmed}"></td>
 	    			<td th:text="${indianCase.deaths}"></td>
+	    			<td th:text="${indianCase.recovered}"></td>
 	    	</tr>
 	</table>
-	<p id = "source" class="lead" align="center" style="font-size:10px">Source - Deccan Herald</p>
+	<p id = "source" class="lead" align="center" style="font-size:10px">Source - https://www.covid19india.org/</p>
   </div>
   
  </div>

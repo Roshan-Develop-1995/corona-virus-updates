@@ -2,16 +2,41 @@ package com.coronavirus.coronavirustracker.model;
 
 public class CoronaIndia {
 	
-	private int positiveCases;
+	private String active;
+	private String confirmed;
+	private String deaths;
+	private String lastUpdatedTime;
+	private String recovered;
 	private String state;
-	private int deaths;
-	private int noOfForeigners;
-	private int noOfIndians;
-	public int getPositiveCases() {
-		return positiveCases;
+	public String getActive() {
+		return active;
 	}
-	public void setPositiveCases(int positiveCases) {
-		this.positiveCases = positiveCases;
+	public void setActive(String active) {
+		this.active = active;
+	}
+	public String getConfirmed() {
+		return confirmed;
+	}
+	public void setConfirmed(String confirmed) {
+		this.confirmed = confirmed;
+	}
+	public String getDeaths() {
+		return deaths;
+	}
+	public void setDeaths(String deaths) {
+		this.deaths = deaths;
+	}
+	public String getLastUpdatedTime() {
+		return lastUpdatedTime;
+	}
+	public void setLastUpdatedTime(String lastUpdatedTime) {
+		this.lastUpdatedTime = lastUpdatedTime;
+	}
+	public String getRecovered() {
+		return recovered;
+	}
+	public void setRecovered(String recovered) {
+		this.recovered = recovered;
 	}
 	public String getState() {
 		return state;
@@ -19,24 +44,7 @@ public class CoronaIndia {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public int getDeaths() {
-		return deaths;
-	}
-	public void setDeaths(int deaths) {
-		this.deaths = deaths;
-	}
-	public int getNoOfForeigners() {
-		return noOfForeigners;
-	}
-	public void setNoOfForeigners(int noOfForeigners) {
-		this.noOfForeigners = noOfForeigners;
-	}
-	public int getNoOfIndians() {
-		return noOfIndians;
-	}
-	public void setNoOfIndians(int noOfIndians) {
-		this.noOfIndians = noOfIndians;
-	}
+	
 	
 	
 
