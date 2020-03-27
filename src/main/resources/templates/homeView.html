@@ -80,15 +80,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   	<table class = "table table-striped">
 	    	<tr>
 	    		<th>State</th>
-	    		<th>Active</th>
 	    		<th>Confirmed</th>
+	    		<th>Active</th>
 	    		<th>Deaths</th>
 	    		<th>Recovered</th>
 	    	</tr>
 	    	<tr th:each = "indianCase : ${indianCases}">
 	    			<td th:text="${indianCase.state}"></td>
-	    			<td th:text="${indianCase.active}"></td>
 	    			<td th:text="${indianCase.confirmed}"></td>
+	    			<td th:text="${indianCase.active}"></td>
 	    			<td th:text="${indianCase.deaths}"></td>
 	    			<td th:text="${indianCase.recovered}"></td>
 	    	</tr>
