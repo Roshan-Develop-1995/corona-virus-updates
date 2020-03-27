@@ -78,7 +78,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	    		<th>No of Indians</th>
 	    		<th>Deaths</th>
 	    	</tr>
-	    	<tr th:each= "indianCase : ${indianCases}">
+	    	<tr th:each = "indianCase : ${indianCases}">
 	    			<td th:text="${indianCase.state}"></td>
 	    			<td th:text="${indianCase.positiveCases}"></td>
 	    			<td th:text="${indianCase.noOfForeigners}"></td>
