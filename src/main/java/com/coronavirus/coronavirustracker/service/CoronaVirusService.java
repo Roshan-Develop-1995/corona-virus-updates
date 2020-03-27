@@ -147,7 +147,7 @@ public class CoronaVirusService {
 		coronaIndia7.setPositiveCases(55);
 		coronaIndia7.setNoOfForeigners(0);
 		coronaIndia7.setNoOfIndians(coronaIndia7.getPositiveCases()-coronaIndia7.getNoOfForeigners());
-		coronaIndia7.setDeaths(2);
+		coronaIndia7.setDeaths(3);
 		coronaIndiaCases.add(coronaIndia7);
 		
 		CoronaIndia coronaIndia8 = new CoronaIndia();
@@ -267,7 +267,7 @@ public class CoronaVirusService {
 		coronaIndia22.setPositiveCases(23);
 		coronaIndia22.setNoOfForeigners(0);
 		coronaIndia22.setNoOfIndians(coronaIndia22.getPositiveCases()-coronaIndia22.getNoOfForeigners());
-		coronaIndia22.setDeaths(1);
+		coronaIndia22.setDeaths(2);
 		coronaIndiaCases.add(coronaIndia22);
 		
 		CoronaIndia coronaIndia23 = new CoronaIndia();
