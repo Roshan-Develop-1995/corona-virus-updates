@@ -144,7 +144,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia7 = new CoronaIndia();
 		coronaIndia7.setState("Karnataka");
-		coronaIndia7.setPositiveCases(62);
+		coronaIndia7.setPositiveCases(64);
 		coronaIndia7.setNoOfForeigners(0);
 		coronaIndia7.setNoOfIndians(coronaIndia7.getPositiveCases()-coronaIndia7.getNoOfForeigners());
 		coronaIndia7.setDeaths(3);
@@ -264,7 +264,7 @@ public class CoronaVirusService {
 		
 		CoronaIndia coronaIndia22 = new CoronaIndia();
 		coronaIndia22.setState("Madhya Pradesh");
-		coronaIndia22.setPositiveCases(24);
+		coronaIndia22.setPositiveCases(27);
 		coronaIndia22.setNoOfForeigners(0);
 		coronaIndia22.setNoOfIndians(coronaIndia22.getPositiveCases()-coronaIndia22.getNoOfForeigners());
 		coronaIndia22.setDeaths(2);
