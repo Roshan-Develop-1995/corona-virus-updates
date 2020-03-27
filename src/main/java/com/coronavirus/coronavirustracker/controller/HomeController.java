@@ -29,7 +29,7 @@ public class HomeController {
 	public String showIndianCases(Model model) {
 		List<CoronaIndia> indianCases = new ArrayList<CoronaIndia>();
 		indianCases = coronaVirusService.getCasesInIndia();
-		//indianCases.sort((o1,o2)->(o1.getActive()).compareTo(o2.getActive()));
+		//indianCases.sort((o1,o2)->(o1.getActive()).compareTo(o2.getActive()))
 		model.addAttribute("indianCases", indianCases);
 		model.addAttribute("flag", "indianCases");
 		return "homeView";
