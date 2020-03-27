@@ -23,6 +23,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   		<input id="search" class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"  value="Search" >
 	</div>
   </form>
+  <form action="/searchIndianState.htm">
+  	<div class="active-cyan-3 active-cyan-4 mb-4">
+  		<input id="searchIndia" class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"  value="Click to find State and UT cases chart for India" >
+  	</div>
+  </form>
 </header>
 <div class="jumbotron" th:if="${flag == 'noCountry'}">
 	<p class="lead" th:text="${search}"></p>
@@ -36,6 +41,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	    		<th>Active Cases</th>
 	    		<th>Deaths</th>
 	    		<th>Recovered Cases</th>
+	    		<th>Last Updated</th>
 	    	</tr>
 	    	<tr >
 	    			<td th:text="${country}"></td>
@@ -43,6 +49,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	    			<td th:text="${confirmedCases}">0</td>
 	    			<td th:text="${deaths}">0</td>
 	    			<td th:text="${recovered}">0</td>
+	    			<td th:text="${lastUpdated}">0</td>
 	    	</tr>
 	</table>
   	<!--  <p class="lead">
@@ -57,6 +64,29 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 		  <h3>Number of recovered cases</h3>
 		  <span th:text="${recoverd}"></span>
 	</p>-->
+  </div>
+  
+ </div>
+ <div  th:if="${flag == 'indianCases'}" id="recordsIndia" class="table-responsive">
+  <div class="w3-content">
+  	<p class="lead" align="center">Last Updated - 26th Mar 2020</p>
+  	<table class = "table table-striped">
+	    	<tr>
+	    		<th>State</th>
+	    		<th>Positive Cases</th>
+	    		<th>No of Foreigners</th>
+	    		<th>No of Indians</th>
+	    		<th>Deaths</th>
+	    	</tr>
+	    	<tr th:each= "indianCase : ${indianCases}">
+	    			<td th:text="${indianCase.state}"></td>
+	    			<td th:text="${indianCase.positiveCases}"></td>
+	    			<td th:text="${indianCase.noOfForeigners}"></td>
+	    			<td th:text="${indianCase.noOfIndians}"></td>
+	    			<td th:text="${indianCase.deaths}"></td>
+	    	</tr>
+	</table>
+	<p id = "source" class="lead" align="center" style="font-size:10px">Source - Deccan Herald</p>
   </div>
   
  </div>

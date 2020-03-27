@@ -3,6 +3,7 @@ package com.coronavirus.coronavirustracker.model;
 public class Corona {
 	
 	private int noOfCases;
+	private String lastUpdated;
 	private int noOfSuspectedCases;
 	private int noOfConfirmedCases;
 	private int noOfDeaths;
@@ -65,6 +66,13 @@ public class Corona {
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
-	
+
+	public String getLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(String lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
 	
 }
