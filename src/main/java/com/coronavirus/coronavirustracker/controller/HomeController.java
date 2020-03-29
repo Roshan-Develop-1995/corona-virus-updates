@@ -37,11 +37,7 @@ public class HomeController {
 	
 	@GetMapping("/search.htm")
 	public String showCases(@RequestParam("country") String country, Model model) {
-		if(country == "") {
-			model.addAttribute("search", "Please Specify a Country");
-			model.addAttribute("flag", "noCountry");
-		}
-		else if(country != "") {
+		if(country != "") {
 			Corona corona = coronaVirusService.getCases(country);
 			if(null!=corona.getErrorMessage() && corona.getErrorMessage()!="") {
 				model.addAttribute("flag", "noCountry");
