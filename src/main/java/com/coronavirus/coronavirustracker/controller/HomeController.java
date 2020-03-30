@@ -29,9 +29,22 @@ public class HomeController {
 	public String showIndianCases(Model model) {
 		List<CoronaIndia> indianCases = new ArrayList<CoronaIndia>();
 		indianCases = coronaVirusService.getCasesInIndia();
-		//indianCases.sort((o1,o2)->(o1.getActive()).compareTo(o2.getActive()))
-		model.addAttribute("indianCases", indianCases);
-		model.addAttribute("flag", "indianCases");
+		if("" != indianCases.get(0).getErrorMeassage() || null != indianCases.get(0).getErrorMeassage()) {
+			model.addAttribute("indianCases", indianCases);
+			model.addAttribute("flag", "indianCases");
+		}else {
+			model.addAttribute("flag", "errorCase");
+			model.addAttribute("message", indianCases.get(0).getErrorMeassage() );
+		}
+		CoronaIndia coronaIndia = coronaVirusService.getCasesTimeSeries();
+		if("" != coronaIndia.getErrorMeassage() || null != coronaIndia.getErrorMeassage()) {
+			model.addAttribute("previousDayCases", coronaIndia);
+			model.addAttribute("flag", "indianCases");
+		}else {
+			model.addAttribute("flag", "errorCase");
+			model.addAttribute("message", coronaIndia.getErrorMeassage() );
+		}
+		
 		return "homeView";
 	}
 	
@@ -40,8 +53,8 @@ public class HomeController {
 		if(country != "") {
 			Corona corona = coronaVirusService.getCases(country);
 			if(null!=corona.getErrorMessage() && corona.getErrorMessage()!="") {
-				model.addAttribute("flag", "noCountry");
-				model.addAttribute("search", corona.getErrorMessage());
+				model.addAttribute("flag", "error");
+				model.addAttribute("message", corona.getErrorMessage());
 			}
 			else {
 				model.addAttribute("lastUpdated", corona.getLastUpdated());

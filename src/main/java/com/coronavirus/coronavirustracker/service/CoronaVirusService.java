@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.coronavirus.coronavirustracker.model.Cases;
+import com.coronavirus.coronavirustracker.model.CasesTimeSeries;
 import com.coronavirus.coronavirustracker.model.ConfirmedCases;
 import com.coronavirus.coronavirustracker.model.Corona;
 import com.coronavirus.coronavirustracker.model.CoronaIndia;
@@ -58,15 +59,41 @@ public class CoronaVirusService {
     			coronaIndia.setRecovered(sw.getRecovered());
     			coronaIndiaCases.add(coronaIndia);
     		}
+    		
         	
     		return coronaIndiaCases;
         	
         }catch(Exception e) {
-        	Corona corona = new Corona();
-        	corona.setErrorMessage("No data found for this country, please provide a valid country.");
+        	CoronaIndia coronaIndia = new CoronaIndia();
+        	coronaIndia.setErrorMeassage("Some Error Occured. Please try after sometime.");
+        	coronaIndiaCases.add(coronaIndia);
         	return coronaIndiaCases;
         }
 
+	}
+	
+	public CoronaIndia getCasesTimeSeries() {
+		HttpHeaders header=new HttpHeaders();
+        HttpEntity<Example> request=new HttpEntity(header);
+        RestTemplate restTemplate=new RestTemplate();
+        try {
+        	ResponseEntity<Example> responseStateWise = restTemplate.exchange(INDIA_CASES_URL, HttpMethod.GET, request, new ParameterizedTypeReference<Example>() {
+			});
+        	CasesTimeSeries cts = new CasesTimeSeries();
+        	Example exampleResponse = new  Example();
+    		exampleResponse = responseStateWise.getBody();
+    		cts = exampleResponse.getCasesTimeSeries().get(exampleResponse.getCasesTimeSeries().size()-1);
+    		CoronaIndia coronaIndia = new CoronaIndia();
+    		coronaIndia.setPreviousConfirmed(cts.getDailyconfirmed());
+    		coronaIndia.setPreviousDay(cts.getDate());
+    		coronaIndia.setPreviousDeaths(cts.getDailydeceased());
+    		coronaIndia.setPreviousRecovered(cts.getDailyrecovered());
+    		return coronaIndia;
+        }catch(Exception e) {
+        	CoronaIndia coronaIndia = new CoronaIndia();
+        	coronaIndia.setErrorMeassage("Some Error Occured. Please try after sometime.");
+        	return coronaIndia;
+        }
 	}
 	
 	public Corona getCases(String country) {

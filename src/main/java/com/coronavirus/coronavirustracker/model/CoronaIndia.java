@@ -8,6 +8,12 @@ public class CoronaIndia {
 	private String lastUpdatedTime;
 	private String recovered;
 	private String state;
+	private String previousConfirmed;
+	private String previousDeaths;
+	private String previousRecovered;
+	private String previousDay;
+	private String errorMeassage;
+	
 	public String getActive() {
 		return active;
 	}
@@ -44,8 +50,37 @@ public class CoronaIndia {
 	public void setState(String state) {
 		this.state = state;
 	}
+	public String getPreviousConfirmed() {
+		return previousConfirmed;
+	}
+	public void setPreviousConfirmed(String previousConfirmed) {
+		this.previousConfirmed = previousConfirmed;
+	}
+	public String getPreviousDeaths() {
+		return previousDeaths;
+	}
+	public void setPreviousDeaths(String previousDeaths) {
+		this.previousDeaths = previousDeaths;
+	}
 	
-	
-	
+	public String getPreviousRecovered() {
+		return previousRecovered;
+	}
+	public void setPreviousRecovered(String previousRecovered) {
+		this.previousRecovered = previousRecovered;
+	}
+	public String getPreviousDay() {
+		return previousDay;
+	}
+	public void setPreviousDay(String previousDay) {
+		this.previousDay = previousDay;
+	}
+	public String getErrorMeassage() {
+		return errorMeassage;
+	}
+	public void setErrorMeassage(String errorMeassage) {
+		this.errorMeassage = errorMeassage;
+	}
+		
 
 }

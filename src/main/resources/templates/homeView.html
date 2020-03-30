@@ -37,8 +37,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   	</div> 
   </form>
 </header>
-<div class="jumbotron" th:if="${flag == 'noCountry'}">
-	<p class="lead" th:text="${search}"></p>
+<div class="jumbotron" th:if="${flag == 'error'}">
+	<p class="lead" th:text="${message}"></p>
+</div>
+<div class="jumbotron" th:if="${flag == 'errorCase'}">
+	<p class="lead" th:text="${message}"></p>
 </div>
 <div th:if="${flag == 'true'}" id="records" class="table-responsive">
   <div class="w3-content">
@@ -60,23 +63,18 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	    			<td th:text="${lastUpdated}">0</td>
 	    	</tr>
 	</table>
-  	<!--  <p class="lead">
-		  <h3>Number of cases spotted</h3>
-		  <span th:text="${cases}"></span>
-		  <h3>Number of suspected cases</h3>
-		  <span th:text="${suspectedCases}"></span>
-		  <h3>Number of confirmed cases</h3>
-		  <span th:text="${confirmedCases}"></span>
-		  <h3>Number of deaths</h3>
-		  <span th:text="${deaths}"></span>
-		  <h3>Number of recovered cases</h3>
-		  <span th:text="${recoverd}"></span>
-	</p>-->
   </div>
   
  </div>
  <div th:if="${flag == 'indianCases'}" id="recordsIndia" class="table-responsive">
   <div class="w3-content">
+  	<div class="jumbotron">
+		<h3 class="lead" align="center" > End Day Report for India </h3>
+  		<span class="lead" >On the date of </span> <span class ="lead" th:text="${previousDayCases.previousDay}"></span>
+  		<span class="lead" >. The number of new cases confirmed were </span><span class ="lead" th:text="${previousDayCases.previousConfirmed}"></span>
+  		<span class="lead"  >. The number of new deaths reported were </span><span class ="lead" th:text="${previousDayCases.previousDeaths}"></span>
+  		<span class="lead" >. The number of people recovered on that day were </span><span class ="lead" th:text="${previousDayCases.previousRecovered}"></span>
+  	</div>
   	<table class = "table table-striped">
 	    	<tr>
 	    		<th>State</th>
