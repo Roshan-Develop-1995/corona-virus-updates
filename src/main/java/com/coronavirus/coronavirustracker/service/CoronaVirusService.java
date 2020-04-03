@@ -19,7 +19,6 @@ import com.coronavirus.coronavirustracker.model.Corona;
 import com.coronavirus.coronavirustracker.model.CoronaIndia;
 import com.coronavirus.coronavirustracker.model.Deaths;
 import com.coronavirus.coronavirustracker.model.Example;
-import com.coronavirus.coronavirustracker.model.KeyValue;
 import com.coronavirus.coronavirustracker.model.Recovered;
 import com.coronavirus.coronavirustracker.model.Statewise;
 import com.coronavirus.coronavirustracker.model.SuspectedCases;
@@ -80,15 +79,15 @@ public class CoronaVirusService {
         try {
         	ResponseEntity<Example> responseStateWise = restTemplate.exchange(INDIA_CASES_URL, HttpMethod.GET, request, new ParameterizedTypeReference<Example>() {
 			});
-        	KeyValue cts = new KeyValue();
+        	CasesTimeSeries cts = new CasesTimeSeries();
         	Example exampleResponse = new  Example();
     		exampleResponse = responseStateWise.getBody();
-    		cts = exampleResponse.getKeyValues().get(0);
+    		cts = exampleResponse.getCasesTimeSeries().get(exampleResponse.getCasesTimeSeries().size()-1);
     		CoronaIndia coronaIndia = new CoronaIndia();
-    		coronaIndia.setPreviousConfirmed(cts.getConfirmeddelta());
-    		coronaIndia.setPreviousDay(cts.getLastupdatedtime().substring(0, 10));
-    		coronaIndia.setPreviousDeaths(cts.getDeceaseddelta());
-    		coronaIndia.setPreviousRecovered(cts.getRecovereddelta());
+    		coronaIndia.setPreviousConfirmed(cts.getDailyconfirmed());
+    		coronaIndia.setPreviousDay(cts.getDate());
+    		coronaIndia.setPreviousDeaths(cts.getDailydeceased());
+    		coronaIndia.setPreviousRecovered(cts.getDailyrecovered());
     		return coronaIndia;
         }catch(Exception e) {
         	CoronaIndia coronaIndia = new CoronaIndia();
