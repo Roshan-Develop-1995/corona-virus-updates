@@ -108,7 +108,7 @@ public class CoronaVirusService {
                     	corona.setNoOfCases(c.getTotalConfirmed());
                         corona.setNoOfConfirmedCases(c.getNewConfirmed());
                         corona.setNoOfDeaths(c.getTotalDeaths());
-                        corona.setNoOfRecoveredCases(c.getTotalDeaths());
+                        corona.setNoOfRecoveredCases(c.getTotalRecovered());
                         corona.setLastUpdated(c.getDate());
             		}
             	}
