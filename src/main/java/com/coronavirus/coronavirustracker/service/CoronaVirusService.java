@@ -18,6 +18,7 @@ import com.coronavirus.coronavirustracker.model.CoronaIndia;
 import com.coronavirus.coronavirustracker.model.Country;
 import com.coronavirus.coronavirustracker.model.Example;
 import com.coronavirus.coronavirustracker.model.Statewise;
+import com.coronavirus.coronavirustracker.model.Summary;
 import com.coronavirus.coronavirustracker.model.Tested;
 import com.coronavirus.coronavirustracker.model.TestedData;
 
@@ -25,10 +26,8 @@ import com.coronavirus.coronavirustracker.model.TestedData;
 public class CoronaVirusService {
 	
 	
-	private static final String COUNTRY_CASES_URL = "https://api.covid19api.com/live/country/";
+	private static final String COUNTRY_CASES_URL = "https://api.covid19api.com/summary";
 	private static final String INDIA_CASES_URL = "https://api.covid19india.org/data.json";
-	
-	private String bearer = "42ec3654-8fb9-33af-ac59-420fef39d9ee";
 	
 	public List<CoronaIndia> getCasesInIndia() {
 		List <CoronaIndia> coronaIndiaCases = new ArrayList<>();
@@ -94,20 +93,27 @@ public class CoronaVirusService {
 		
 		List <Country> countryList = new ArrayList<>();
 		HttpHeaders header=new HttpHeaders();
-        HttpEntity<Country> request=new HttpEntity(header);
+        HttpEntity<Summary> request=new HttpEntity(header);
         RestTemplate restTemplate=new RestTemplate();
         try {
-        	ResponseEntity<List<Country>> responseCountry = restTemplate.exchange(COUNTRY_CASES_URL+country, HttpMethod.GET, request, new ParameterizedTypeReference<List<Country>>() {
+        	ResponseEntity<Summary> responseSummary = restTemplate.exchange(COUNTRY_CASES_URL, HttpMethod.GET, request, new ParameterizedTypeReference<Summary>() {
 			});
         	Corona corona = new Corona();
-            if(HttpStatus.OK == responseCountry.getStatusCode()) {
-            	countryList = responseCountry.getBody();
-            	corona.setCountry(countryList.get(countryList.size()-1).getCountry());
-            	corona.setNoOfCases(countryList.get(countryList.size()-1).getConfirmed());
-                corona.setNoOfConfirmedCases(countryList.get(countryList.size()-1).getActive());
-                corona.setNoOfDeaths(countryList.get(countryList.size()-1).getDeaths());
-                corona.setNoOfRecoveredCases(countryList.get(countryList.size()-1).getRecovered());
-                corona.setLastUpdated(countryList.get(countryList.size()-1).getDate());
+            if(HttpStatus.OK == responseSummary.getStatusCode()) {
+            	Summary summary = responseSummary.getBody();
+            	countryList = summary.getCountries();
+            	for(Country c : countryList) {
+            		if(country.equals(c.getCountry()) || country.equals(c.getCountryCode()) || country.equals(c.getSlug())) {
+            			corona.setCountry(c.getCountry());
+                    	corona.setNoOfCases(c.getTotalConfirmed());
+                        corona.setNoOfConfirmedCases(c.getNewConfirmed());
+                        corona.setNoOfDeaths(c.getTotalDeaths());
+                        corona.setNoOfRecoveredCases(c.getTotalDeaths());
+                        corona.setLastUpdated(c.getDate());
+            		}
+            	}
+            	if(corona.getCountry().equals("") || corona.getCountry()==null)
+            		corona.setErrorMessage("No data found for this country, please modify your search or provide a country code.");
             }
             else
             	corona.setErrorMessage("No data found for this country, please provide a valid country.");
