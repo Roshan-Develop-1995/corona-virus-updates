@@ -22,6 +22,8 @@ import com.coronavirus.coronavirustracker.model.Example;
 import com.coronavirus.coronavirustracker.model.Recovered;
 import com.coronavirus.coronavirustracker.model.Statewise;
 import com.coronavirus.coronavirustracker.model.SuspectedCases;
+import com.coronavirus.coronavirustracker.model.Tested;
+import com.coronavirus.coronavirustracker.model.TestedData;
 
 @Service
 public class CoronaVirusService {
@@ -144,6 +146,30 @@ public class CoronaVirusService {
         }
         
 
+	}
+	
+	public TestedData getTestData() {
+		HttpHeaders header=new HttpHeaders();
+        HttpEntity<Example> request=new HttpEntity(header);
+        RestTemplate restTemplate=new RestTemplate();
+        try {
+        	ResponseEntity<Example> example = restTemplate.exchange(INDIA_CASES_URL, HttpMethod.GET, request, new ParameterizedTypeReference<Example>() {
+			});
+        	List<Tested> testedList = new ArrayList<>();
+    		Example exampleResponse = new  Example();
+    		exampleResponse = example.getBody();
+    		testedList = exampleResponse.getTested();
+    		TestedData testedData = new TestedData();
+    		testedData.setPercentageOfIndividualTestedPerConfirmedCase(testedList.get(testedList.size()-1).getIndividualstestedperconfirmedcase());
+    		testedData.setPercentageOfPositiveCase(testedList.get(testedList.size()-1).getTestpositivityrate());
+    		testedData.setTotalTests(testedList.get(testedList.size()-1).getTotalsamplestested());
+    		testedData.setLastUpdated(testedList.get(testedList.size()-1).getUpdatetimestamp());
+    		return testedData;
+        }catch(Exception e) {
+        	TestedData testedData = new TestedData();
+        	testedData.setErrorMessage("Some Error Occurred, Try Later.");
+        	return testedData;
+        }
 	}
 	
 	

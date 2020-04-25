@@ -12,85 +12,163 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "source",
-    "totalindividualstested",
-    "totalpositivecases",
-    "totalsamplestested",
-    "updatetimestamp"
+"individualstestedperconfirmedcase",
+"positivecasesfromsamplesreported",
+"samplereportedtoday",
+"source",
+"testpositivityrate",
+"testsconductedbyprivatelabs",
+"testsperconfirmedcase",
+"totalindividualstested",
+"totalpositivecases",
+"totalsamplestested",
+"updatetimestamp"
 })
 public class Tested {
 
-    @JsonProperty("source")
-    private String source;
-    @JsonProperty("totalindividualstested")
-    private String totalindividualstested;
-    @JsonProperty("totalpositivecases")
-    private String totalpositivecases;
-    @JsonProperty("totalsamplestested")
-    private String totalsamplestested;
-    @JsonProperty("updatetimestamp")
-    private String updatetimestamp;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+@JsonProperty("individualstestedperconfirmedcase")
+private String individualstestedperconfirmedcase;
+@JsonProperty("positivecasesfromsamplesreported")
+private String positivecasesfromsamplesreported;
+@JsonProperty("samplereportedtoday")
+private String samplereportedtoday;
+@JsonProperty("source")
+private String source;
+@JsonProperty("testpositivityrate")
+private String testpositivityrate;
+@JsonProperty("testsconductedbyprivatelabs")
+private String testsconductedbyprivatelabs;
+@JsonProperty("testsperconfirmedcase")
+private String testsperconfirmedcase;
+@JsonProperty("totalindividualstested")
+private String totalindividualstested;
+@JsonProperty("totalpositivecases")
+private String totalpositivecases;
+@JsonProperty("totalsamplestested")
+private String totalsamplestested;
+@JsonProperty("updatetimestamp")
+private String updatetimestamp;
+@JsonIgnore
+private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("source")
-    public String getSource() {
-        return source;
-    }
+@JsonProperty("individualstestedperconfirmedcase")
+public String getIndividualstestedperconfirmedcase() {
+return individualstestedperconfirmedcase;
+}
 
-    @JsonProperty("source")
-    public void setSource(String source) {
-        this.source = source;
-    }
+@JsonProperty("individualstestedperconfirmedcase")
+public void setIndividualstestedperconfirmedcase(String individualstestedperconfirmedcase) {
+this.individualstestedperconfirmedcase = individualstestedperconfirmedcase;
+}
 
-    @JsonProperty("totalindividualstested")
-    public String getTotalindividualstested() {
-        return totalindividualstested;
-    }
+@JsonProperty("positivecasesfromsamplesreported")
+public String getPositivecasesfromsamplesreported() {
+return positivecasesfromsamplesreported;
+}
 
-    @JsonProperty("totalindividualstested")
-    public void setTotalindividualstested(String totalindividualstested) {
-        this.totalindividualstested = totalindividualstested;
-    }
+@JsonProperty("positivecasesfromsamplesreported")
+public void setPositivecasesfromsamplesreported(String positivecasesfromsamplesreported) {
+this.positivecasesfromsamplesreported = positivecasesfromsamplesreported;
+}
 
-    @JsonProperty("totalpositivecases")
-    public String getTotalpositivecases() {
-        return totalpositivecases;
-    }
+@JsonProperty("samplereportedtoday")
+public String getSamplereportedtoday() {
+return samplereportedtoday;
+}
 
-    @JsonProperty("totalpositivecases")
-    public void setTotalpositivecases(String totalpositivecases) {
-        this.totalpositivecases = totalpositivecases;
-    }
+@JsonProperty("samplereportedtoday")
+public void setSamplereportedtoday(String samplereportedtoday) {
+this.samplereportedtoday = samplereportedtoday;
+}
 
-    @JsonProperty("totalsamplestested")
-    public String getTotalsamplestested() {
-        return totalsamplestested;
-    }
+@JsonProperty("source")
+public String getSource() {
+return source;
+}
 
-    @JsonProperty("totalsamplestested")
-    public void setTotalsamplestested(String totalsamplestested) {
-        this.totalsamplestested = totalsamplestested;
-    }
+@JsonProperty("source")
+public void setSource(String source) {
+this.source = source;
+}
 
-    @JsonProperty("updatetimestamp")
-    public String getUpdatetimestamp() {
-        return updatetimestamp;
-    }
+@JsonProperty("testpositivityrate")
+public String getTestpositivityrate() {
+return testpositivityrate;
+}
 
-    @JsonProperty("updatetimestamp")
-    public void setUpdatetimestamp(String updatetimestamp) {
-        this.updatetimestamp = updatetimestamp;
-    }
+@JsonProperty("testpositivityrate")
+public void setTestpositivityrate(String testpositivityrate) {
+this.testpositivityrate = testpositivityrate;
+}
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
+@JsonProperty("testsconductedbyprivatelabs")
+public String getTestsconductedbyprivatelabs() {
+return testsconductedbyprivatelabs;
+}
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+@JsonProperty("testsconductedbyprivatelabs")
+public void setTestsconductedbyprivatelabs(String testsconductedbyprivatelabs) {
+this.testsconductedbyprivatelabs = testsconductedbyprivatelabs;
+}
+
+@JsonProperty("testsperconfirmedcase")
+public String getTestsperconfirmedcase() {
+return testsperconfirmedcase;
+}
+
+@JsonProperty("testsperconfirmedcase")
+public void setTestsperconfirmedcase(String testsperconfirmedcase) {
+this.testsperconfirmedcase = testsperconfirmedcase;
+}
+
+@JsonProperty("totalindividualstested")
+public String getTotalindividualstested() {
+return totalindividualstested;
+}
+
+@JsonProperty("totalindividualstested")
+public void setTotalindividualstested(String totalindividualstested) {
+this.totalindividualstested = totalindividualstested;
+}
+
+@JsonProperty("totalpositivecases")
+public String getTotalpositivecases() {
+return totalpositivecases;
+}
+
+@JsonProperty("totalpositivecases")
+public void setTotalpositivecases(String totalpositivecases) {
+this.totalpositivecases = totalpositivecases;
+}
+
+@JsonProperty("totalsamplestested")
+public String getTotalsamplestested() {
+return totalsamplestested;
+}
+
+@JsonProperty("totalsamplestested")
+public void setTotalsamplestested(String totalsamplestested) {
+this.totalsamplestested = totalsamplestested;
+}
+
+@JsonProperty("updatetimestamp")
+public String getUpdatetimestamp() {
+return updatetimestamp;
+}
+
+@JsonProperty("updatetimestamp")
+public void setUpdatetimestamp(String updatetimestamp) {
+this.updatetimestamp = updatetimestamp;
+}
+
+@JsonAnyGetter
+public Map<String, Object> getAdditionalProperties() {
+return this.additionalProperties;
+}
+
+@JsonAnySetter
+public void setAdditionalProperty(String name, Object value) {
+this.additionalProperties.put(name, value);
+}
 
 }

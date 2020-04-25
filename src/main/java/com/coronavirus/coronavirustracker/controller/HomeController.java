@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.coronavirus.coronavirustracker.model.Corona;
 import com.coronavirus.coronavirustracker.model.CoronaIndia;
+import com.coronavirus.coronavirustracker.model.TestedData;
 import com.coronavirus.coronavirustracker.service.CoronaVirusService;
 
 @Controller
@@ -44,7 +45,14 @@ public class HomeController {
 			model.addAttribute("flag", "errorCase");
 			model.addAttribute("message", coronaIndia.getErrorMeassage() );
 		}
-		
+		TestedData testedData = coronaVirusService.getTestData();
+		if("" != testedData.getErrorMessage() || null != testedData.getErrorMessage()) {
+			model.addAttribute("testedData", testedData);
+			model.addAttribute("flag", "indianCases");
+		}else {
+			model.addAttribute("flag", "errorCase");
+			model.addAttribute("message", testedData.getErrorMessage() );
+		}
 		return "homeView";
 	}
 	

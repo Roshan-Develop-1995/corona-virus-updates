@@ -75,12 +75,26 @@ a {
  <div th:if="${flag == 'indianCases'}" id="recordsIndia" class="table-responsive">
   <div class="w3-content">
   	<div class="jumbotron">
-		<h3 class="lead" align="center" > Daily Report for India </h3>
+		<h3 class="lead" align="center" > Previous day report for cases in India </h3>
   		<span class="lead" >On the date of </span> <span class ="lead" th:text="${previousDayCases.previousDay}"></span>
   		<span class="lead" >, the number of new cases confirmed were </span><span class ="lead" th:text="${previousDayCases.previousConfirmed}"></span>
   		<span class="lead"  >. The number of new deaths reported were </span><span class ="lead" th:text="${previousDayCases.previousDeaths}"></span>
   		<span class="lead" >. The number of people recovered on that day were </span><span class ="lead" th:text="${previousDayCases.previousRecovered}"></span>
   	</div>
+  	<table class = "table table-striped">
+  		<tr>
+	    		<th>Total Tests</th>
+	    		<th>Test Positivty Rate</th>
+	    		<th>% Test/confirmed case</th>
+	    		<th>Last Updated</th>
+	    	</tr>
+	    	<tr th:each = "testedData : ${testedData}">
+	    			<td th:text="${testedData.totalTests}"></td>
+	    			<td th:text="${testedData.percentageOfPositiveCase}"></td>
+	    			<td th:text="${testedData.percentageOfIndividualTestedPerConfirmedCase}"></td>
+	    			<td th:text="${testedData.lastUpdated}"></td>
+	    	</tr>
+  	</table>
   	<table class = "table table-striped">
 	    	<tr>
 	    		<th>State</th>
