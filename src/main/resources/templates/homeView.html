@@ -84,14 +84,16 @@ a {
   	<table class = "table table-striped">
   		<tr>
 	    		<th>Total Tests</th>
-	    		<th>Test Positivty Rate</th>
-	    		<th>% Test/confirmed case</th>
+	    		<th>Test Positivty Rate(%)</th>
+	    		<th>Recovery Rate(%)</th>
+	    		<th>Death Rate(%)</th>
 	    		<th>Last Updated</th>
 	    	</tr>
 	    	<tr th:each = "testedData : ${testedData}">
 	    			<td th:text="${testedData.totalTests}"></td>
 	    			<td th:text="${testedData.percentageOfPositiveCase}"></td>
-	    			<td th:text="${testedData.percentageOfIndividualTestedPerConfirmedCase}"></td>
+	    			<td th:text="${testedData.recoveryRate}"></td>
+	    			<td th:text="${testedData.deathRate}"></td>
 	    			<td th:text="${testedData.lastUpdated}"></td>
 	    	</tr>
   	</table>

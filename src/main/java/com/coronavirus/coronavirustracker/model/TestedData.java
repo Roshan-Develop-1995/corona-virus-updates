@@ -2,16 +2,24 @@ package com.coronavirus.coronavirustracker.model;
 
 public class TestedData {
 	
-	private String percentageOfIndividualTestedPerConfirmedCase;
+	private String recoveryRate;
+	private String deathRate;
 	private String percentageOfPositiveCase;
 	private String totalTests;
 	private String lastUpdated;
 	private String errorMessage;
-	public String getPercentageOfIndividualTestedPerConfirmedCase() {
-		return percentageOfIndividualTestedPerConfirmedCase;
+	
+	public String getRecoveryRate() {
+		return recoveryRate;
 	}
-	public void setPercentageOfIndividualTestedPerConfirmedCase(String percentageOfIndividualTestedPerConfirmedCase) {
-		this.percentageOfIndividualTestedPerConfirmedCase = percentageOfIndividualTestedPerConfirmedCase;
+	public void setRecoveryRate(String recoveryRate) {
+		this.recoveryRate = recoveryRate;
+	}
+	public String getDeathRate() {
+		return deathRate;
+	}
+	public void setDeathRate(String deathRate) {
+		this.deathRate = deathRate;
 	}
 	public String getPercentageOfPositiveCase() {
 		return percentageOfPositiveCase;

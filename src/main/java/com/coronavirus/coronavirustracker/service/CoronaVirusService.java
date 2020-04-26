@@ -1,5 +1,6 @@
 package com.coronavirus.coronavirustracker.service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -134,14 +135,18 @@ public class CoronaVirusService {
         try {
         	ResponseEntity<Example> example = restTemplate.exchange(INDIA_CASES_URL, HttpMethod.GET, request, new ParameterizedTypeReference<Example>() {
 			});
+        	DecimalFormat df = new DecimalFormat("#.######");
+        	List<Statewise> stateWiseResponses = new ArrayList<>();
         	List<Tested> testedList = new ArrayList<>();
     		Example exampleResponse = new  Example();
     		exampleResponse = example.getBody();
     		testedList = exampleResponse.getTested();
+    		stateWiseResponses = exampleResponse.getStatewise();
     		TestedData testedData = new TestedData();
-    		testedData.setPercentageOfIndividualTestedPerConfirmedCase(testedList.get(testedList.size()-2).getIndividualstestedperconfirmedcase());
-    		testedData.setPercentageOfPositiveCase(testedList.get(testedList.size()-2).getTestpositivityrate());
     		testedData.setTotalTests(testedList.get(testedList.size()-1).getTotalsamplestested());
+    		testedData.setPercentageOfPositiveCase(df.format((Double.parseDouble(stateWiseResponses.get(0).getConfirmed())/Double.parseDouble(testedData.getTotalTests())*100)));
+    		testedData.setDeathRate(df.format((Double.parseDouble(stateWiseResponses.get(0).getDeaths())/Double.parseDouble(testedData.getTotalTests())*100)));
+    		testedData.setRecoveryRate(df.format((Double.parseDouble(stateWiseResponses.get(0).getRecovered())/Double.parseDouble(testedData.getTotalTests())*100)));
     		testedData.setLastUpdated(testedList.get(testedList.size()-1).getUpdatetimestamp());
     		return testedData;
         }catch(Exception e) {
