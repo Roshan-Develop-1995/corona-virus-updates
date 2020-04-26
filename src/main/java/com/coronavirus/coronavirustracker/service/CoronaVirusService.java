@@ -141,8 +141,8 @@ public class CoronaVirusService {
     		TestedData testedData = new TestedData();
     		testedData.setPercentageOfIndividualTestedPerConfirmedCase(testedList.get(testedList.size()-2).getIndividualstestedperconfirmedcase());
     		testedData.setPercentageOfPositiveCase(testedList.get(testedList.size()-2).getTestpositivityrate());
-    		testedData.setTotalTests(testedList.get(testedList.size()-2).getTotalsamplestested());
-    		testedData.setLastUpdated(testedList.get(testedList.size()-2).getUpdatetimestamp());
+    		testedData.setTotalTests(testedList.get(testedList.size()-1).getTotalsamplestested());
+    		testedData.setLastUpdated(testedList.get(testedList.size()-1).getUpdatetimestamp());
     		return testedData;
         }catch(Exception e) {
         	TestedData testedData = new TestedData();
