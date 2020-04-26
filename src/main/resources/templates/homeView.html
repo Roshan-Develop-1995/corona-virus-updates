@@ -27,6 +27,28 @@ a {
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">CORONA VIRUS REAL TIME UPDATES</h1>
+  <div class="table-responsive">
+  <div class="w3-content">
+  	<table class = "table table-striped">
+	    	<tr>
+	    		<th>Total Confirmed Cases</th>
+	    		<th>New Confirmed Cases</th>
+	    		<th>Total Recovered Cases</th>
+	    		<th>New Recovered Cases</th>
+	    		<th>Total Death Cases</th>
+	    		<th>New Death Cases</th>
+	    	</tr>
+	    	<tr th:each = "globalData : ${globalData}"></td>
+	    			<td th:text="${globalData.totalConfirmed}">0</td>
+	    			<td th:text="${globalData.newConfirmed}">0</td>
+	    			<td th:text="${globalData.totalRecovered}">0</td>
+	    			<td th:text="${globalData.newRecovered}">0</td>
+	    			<td th:text="${globalData.totalDeaths}">0</td>
+	    			<td th:text="${globalData.newDeaths}">0</td>
+	    	</tr>
+	</table>
+  </div>
+  </div>
   <div class="active-cyan-3 active-cyan-4 mb-4">
   	<a href="https://google.com/covid19-map/?hl=en" class="lead">Click to view full world map</a>
   </div>

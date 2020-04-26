@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.coronavirus.coronavirustracker.model.Corona;
 import com.coronavirus.coronavirustracker.model.CoronaIndia;
+import com.coronavirus.coronavirustracker.model.GlobalData;
 import com.coronavirus.coronavirustracker.model.TestedData;
 import com.coronavirus.coronavirustracker.service.CoronaVirusService;
 
@@ -23,6 +24,8 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(Model model) {
 		model.addAttribute("flag","false");
+		GlobalData gd =coronaVirusService.getSummary();
+		model.addAttribute("globalData", gd);
 		return "homeView";
 	}
 	

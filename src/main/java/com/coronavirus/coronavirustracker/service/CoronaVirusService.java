@@ -18,6 +18,8 @@ import com.coronavirus.coronavirustracker.model.Corona;
 import com.coronavirus.coronavirustracker.model.CoronaIndia;
 import com.coronavirus.coronavirustracker.model.Country;
 import com.coronavirus.coronavirustracker.model.Example;
+import com.coronavirus.coronavirustracker.model.Global;
+import com.coronavirus.coronavirustracker.model.GlobalData;
 import com.coronavirus.coronavirustracker.model.Statewise;
 import com.coronavirus.coronavirustracker.model.Summary;
 import com.coronavirus.coronavirustracker.model.Tested;
@@ -87,6 +89,34 @@ public class CoronaVirusService {
         	CoronaIndia coronaIndia = new CoronaIndia();
         	coronaIndia.setErrorMeassage("Some Error Occured. Please try after sometime.");
         	return coronaIndia;
+        }
+	}
+	
+	public GlobalData getSummary() {
+		HttpHeaders header=new HttpHeaders();
+        HttpEntity<Summary> request=new HttpEntity(header);
+        RestTemplate restTemplate=new RestTemplate();
+        try {
+        	ResponseEntity<Summary> responseSummary = restTemplate.exchange(COUNTRY_CASES_URL, HttpMethod.GET, request, new ParameterizedTypeReference<Summary>() {
+			});
+        	GlobalData gd =  new GlobalData();
+        	if(HttpStatus.OK == responseSummary.getStatusCode()) {
+        		Summary summary = responseSummary.getBody();
+        		Global global = summary.getGlobal();
+        		if(null != global) {
+        			gd.setNewConfirmed(global.getNewConfirmed());
+        			gd.setNewDeaths(global.getNewDeaths());
+        			gd.setNewRecovered(global.getNewRecovered());
+        			gd.setTotalConfirmed(global.getTotalConfirmed());
+        			gd.setTotalDeaths(global.getTotalDeaths());
+        			gd.setTotalRecovered(global.getTotalRecovered());
+        		}
+        	}
+        	return gd;
+        }catch(Exception e) {
+        	GlobalData gd =  new GlobalData();
+        	gd.setErrorMessage("Some Error Occurred, Please try after some time");
+        	return gd;
         }
 	}
 	
