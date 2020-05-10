@@ -31,6 +31,8 @@ public class HomeController {
 	
 	@GetMapping("/searchIndianState.htm")
 	public String showIndianCases(Model model) {
+		GlobalData gd =coronaVirusService.getSummary();
+		model.addAttribute("globalData", gd);
 		List<CoronaIndia> indianCases = new ArrayList<CoronaIndia>();
 		indianCases = coronaVirusService.getCasesInIndia();
 		if("" != indianCases.get(0).getErrorMeassage() || null != indianCases.get(0).getErrorMeassage()) {

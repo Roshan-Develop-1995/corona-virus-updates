@@ -32,19 +32,13 @@ a {
   	<table class = "table table-striped">
 	    	<tr>
 	    		<th>Total Confirmed Cases</th>
-	    		<th>New Confirmed Cases</th>
 	    		<th>Total Recovered Cases</th>
-	    		<th>New Recovered Cases</th>
 	    		<th>Total Death Cases</th>
-	    		<th>New Death Cases</th>
 	    	</tr>
 	    	<tr th:each = "globalData : ${globalData}"></td>
 	    			<td th:text="${globalData.totalConfirmed}">0</td>
-	    			<td th:text="${globalData.newConfirmed}">0</td>
 	    			<td th:text="${globalData.totalRecovered}">0</td>
-	    			<td th:text="${globalData.newRecovered}">0</td>
 	    			<td th:text="${globalData.totalDeaths}">0</td>
-	    			<td th:text="${globalData.newDeaths}">0</td>
 	    	</tr>
 	</table>
   </div>

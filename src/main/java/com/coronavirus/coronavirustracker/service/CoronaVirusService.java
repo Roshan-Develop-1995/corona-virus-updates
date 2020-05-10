@@ -175,8 +175,8 @@ public class CoronaVirusService {
     		TestedData testedData = new TestedData();
     		testedData.setTotalTests(testedList.get(testedList.size()-1).getTotalsamplestested());
     		testedData.setPercentageOfPositiveCase(df.format((Double.parseDouble(stateWiseResponses.get(0).getConfirmed())/Double.parseDouble(testedData.getTotalTests())*100)));
-    		testedData.setDeathRate(df.format((Double.parseDouble(stateWiseResponses.get(0).getDeaths())/Double.parseDouble(testedData.getTotalTests())*100)));
-    		testedData.setRecoveryRate(df.format((Double.parseDouble(stateWiseResponses.get(0).getRecovered())/Double.parseDouble(testedData.getTotalTests())*100)));
+    		testedData.setDeathRate(df.format((Double.parseDouble(stateWiseResponses.get(0).getDeaths())/Double.parseDouble(stateWiseResponses.get(0).getConfirmed())*100)));
+    		testedData.setRecoveryRate(df.format((Double.parseDouble(stateWiseResponses.get(0).getRecovered())/Double.parseDouble(stateWiseResponses.get(0).getConfirmed())*100)));
     		testedData.setLastUpdated(testedList.get(testedList.size()-1).getUpdatetimestamp());
     		return testedData;
         }catch(Exception e) {
